@@ -1,0 +1,7 @@
+6
+Ukraine 12 Kyiv Kharkiv Odesa Dnipro Donetsk Zaporizhzhia Lviv Mykolaiv Mariupol Luhansk Sevastopol Vinnytsia
+USA 10 Chicago Phoenix Dallas Austin Columbus Charlotte Seattle Omaha Miami Oakland
+Germany 11 Berlin Hamburg Munich Cologne Stuttgart Dortmund Essen Leipzig Bremen Dresden Duisburg
+Poland 5 Warsaw Krakow Poznan Lublin Bydgoszcz
+UK 8 Bangor Bath Birmingham Bradford Bristol Canterbury Carlisle Chester
+France 8 Paris Marseille Lyon Toulouse Nice Nantes Strasbourg 

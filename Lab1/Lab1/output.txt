@@ -1,0 +1,4 @@
+ 
+m=0, a=49, b=46 ->   
+m=49, a=51, b=28 ->  # # # # # Do_first_task Do_second_task Do_third_task # # # # # # # # # # # Complete_homework # # # # Do_fourth_task Cooking_some_meals # # Preparations_for_my_Birthday # # # # # # # # # # # # # # # # # # # #  
+m=4, a=63, b=92 ->  Adding_new_function # # Billing_new_wifi_router  
