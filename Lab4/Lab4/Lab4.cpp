@@ -5,24 +5,58 @@
 
 using namespace obt;
 using namespace wm;
-void findMenu(OptimalTree<Event>* tree)
+OptimalTree<Event>* findMenu(OptimalTree<Event>* tree)
 {
-    if (!tree) return;
+    if (!tree) return tree;
     while (true)
     {
         std::string line = "0";
         std::cout << "\nEnter name of Event to find Event in tree "
             << "or enter 0 to exit: ";
         std::cin >> line;
-        if (line == "0") return;
+        if (line == "0") return tree;
         Node<Event>* node = tree->search(Event(line));
         if (!node)
         {
             std::cout << "\nEntered Event wasn't found!" << std::endl;
 
         }
-        else std::cout << "\n" << line << " was found!" << std::endl;
-        return;
+        else {
+            std::vector<Event> values;
+            for (std::size_t i = 1; i < tree->values.size(); i++)
+            {
+                values.push_back(tree->values[i]);
+            }
+            std::vector<int> probabilitiesP(values.size(), 1),
+                probabilitiesQ(values.size() + 1, 1);
+            
+            for (std::size_t i = 0; i < tree->probabilitiesQ.size(); i++)
+            {
+                probabilitiesQ[i] = tree->probabilitiesQ[i];
+            }
+            for (std::size_t i = 1; i < tree->probabilitiesP.size(); i++)
+            {
+                probabilitiesP[i - 1] = tree->probabilitiesP[i];
+            }
+            
+            for (int i = 0; i < tree->values.size(); i++) {
+                if (node->value.getName() == tree->values[i].getName()) {
+                    int j = -1;
+                    for (int k = 0; k < tree->values.size(); k++) {
+                        if (tree->probabilitiesP[k] > 10 && k != i) {
+                            j = k;
+                            break;
+                        }
+                    }
+                    probabilitiesQ[i] =  tree->probabilitiesQ[i] + 10;
+                    probabilitiesP[j - 1] = tree->probabilitiesP[j] - 10;
+                    tree = new OptimalTree<Event>(values, probabilitiesP, probabilitiesQ);
+                    break;
+                }
+            }
+            std::cout << "\n" << line << " was found!" << std::endl;
+        }
+        return tree;
     }
 }
 OptimalTree<Event>* addeventsToTree(std::string path)
@@ -88,7 +122,7 @@ void menu()
             break;
         case '1': tree = addeventsToTree(path);
             break;
-        case '2': findMenu(tree);
+        case '2': tree = findMenu(tree);
             break;
         case '3': if (tree)
         {

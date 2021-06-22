@@ -1,64 +1,154 @@
-#include <iostream>
+#include "Johnson's_algorithm.h"
+#include "Roy_Floyd_algorithm.h"
 #include <conio.h>
-#include "johnsons_algorithm.h"
 
-using namespace wm;
-using namespace ja;
+using namespace std;
 
-void addMenu(Graph<Event, int>& graph)
-{
-    while (true)
-    {
-        std::string line = "0";
-        std::cout << "\nEnter name of Event to add Event to graph "
-            << "or enter 0 to exit: ";
-        std::cin >> line;
-        if (line == "0") return;
-        graph.addVertex(Event(line));
-        std::cout << "\n" << line << " was added!" << std::endl;
-        return;
-    }
-}
-void addeventsToHeap(Graph<Event, int>& graph, std::string path)
-{
-    Book map = readdays(path);
-    for (std::size_t i = 0; i < map.days.size(); i++)
-    {
-        for (std::size_t j = 0; j < map.days[i].events.size(); j++)
-        {
-            graph.addVertex(map.days[i].events[j]);
-        }
-    }
-    for (std::size_t i = 0; i < graph.getNumberOfVertices(); i++)
-        for (std::size_t j = 0; j < graph.getNumberOfVertices(); j++)
-            if(i != j) graph.addEdge(i, j, (graph.getVertexValue(i).getKey() + graph.getVertexValue(j).getKey())%10000);
-    std::cout << "\nevents was read from file!" << std::endl;
-}
 void menu()
 {
-    Graph<Event, int> graph(true);
-    std::string path = "input.txt";
+	fstream output_file;
+	fstream input_file;
+
     while (true)
     {
-        std::cout << "\nMenu:\n1)Add events from file '" << path << "' to graph.\n" <<
-            "2)Find distances.\n" <<
-            "3)Print graph.\n0)Back." << std::endl;
+        std::cout << "\nMenu:\n1) Generate ten new random directed graphs\n" <<
+            "2) Find all-pairs shortest paths using Johnson's algorithm\n" <<
+            "3) Find all-pairs shortest paths using Johnson's algorithm for a user defined graph\n" << 
+            "4) Make a comparation between Johnson's algorithm and Roy-Floyd's algorithm\n" <<
+            "0) Back." << std::endl;
+
         switch (_getch())
         {
-        case '0': return;
-            break;
-        case '1': addeventsToHeap(graph, path);
-            break;
-        case '2': graph.printPathes();
-            break;
-        case '3': std::cout << graph.getTextRepresentation() << std::endl;
-            break;
+		case '1':
+		{
+			write_random_graph(output_file);
+			break;
+		}
+
+		case '2':
+		{
+			//delete everything from output file
+			output_file.open("output_Johnson.txt", ios::trunc | ios::out);
+			output_file.close();
+
+			input_file.open("input.txt", ios::in);
+
+
+			for (int i = 0; i < 10; i++)
+			{
+
+				vector<Edge> edges;
+				int N, E;
+
+				input_file >> N >> E;
+
+				for (int i = 0; i < E; i++)
+				{
+					Edge e;
+					input_file >> e.src;
+					input_file >> e.dest;
+					input_file >> e.weight;
+					edges.push_back(e);
+				}
+
+				Graph new_graph(edges, N);
+
+
+				Johnson_algorithm(new_graph, i, output_file);
+
+			}
+
+			input_file.close();
+
+
+			break;
+		}
+
+		case '3':
+		{
+			output_file.open("output_Johnson.txt", ios::trunc | ios::out);
+			output_file.close();
+
+			vector<Edge> edges;
+			int N, E;
+			cout << "Number of vertices in graph :" << endl;
+			cin >> N;
+			cout << "Number of edges in graph : maxim V*(V-1)" << endl;
+			cin >> E;
+
+			cout << "Enter the edges : (u, v, w)" << endl;
+			for (int i = 0; i < E; i++)
+			{
+				Edge e;
+				cin >> e.src;
+				cin >> e.dest;
+				cin >> e.weight;
+				edges.push_back(e);
+			}
+
+			Graph new_graph(edges, N);
+
+			cout << "User's graph : " << endl;
+			print_graph(new_graph);
+
+			Johnson_algorithm(new_graph, 0, output_file);
+
+			break;
+		}
+
+		case '4':
+		{
+			output_file.open("output_Johnson.txt", ios::trunc | ios::out);
+			output_file.close();
+
+			output_file.open("output_Roy_Floyd.txt", ios::trunc | ios::out);
+			output_file.close();
+
+			input_file.open("input.txt", ios::in);
+
+
+			for (int i = 0; i < 10; i++)
+			{
+
+				vector<Edge> edges;
+				int N, E;
+
+				input_file >> N >> E;
+
+				for (int i = 0; i < E; i++)
+				{
+					Edge e;
+					input_file >> e.src;
+					input_file >> e.dest;
+					input_file >> e.weight;
+					edges.push_back(e);
+				}
+
+				Graph new_graph(edges, N);
+
+				Johnson_algorithm(new_graph, i, output_file);
+
+				floydWarshall(new_graph, i, output_file);
+			}
+
+			input_file.close();
+
+			break;
+		}
+
+
+		case '0':
+		{
+			return;
+		}
+
         default:
             std::cout << "\nEnter correct key!" << std::endl;
             break;
         }
     }
 }
+
 int main()
 {
     menu();

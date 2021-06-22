@@ -1,4 +1,3 @@
 3
-16.04 3 Cooking_some_meals Preparations_for_my_Birthday Complete_homework  
-19.05 2 Adding_new_function Billing_new_wifi_router
-26.06 4 Do_first_task Do_second_task Do_third_task Do_fourth_task
+16.04 3 A B C 
+

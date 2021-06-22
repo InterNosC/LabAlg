@@ -1,0 +1,16 @@
+< - - - - - - GRAPH 0 - - - - - - > 
+Source : 0
+0 <-> 0  path : 0  w : 0
+0 <-> 1  path : 0->2->1  w : 3
+0 <-> 2  path : 0->2  w : 1
+
+Source : 1
+1 <-> 0  path : 1->2->0  w : 4
+1 <-> 1  path : 1  w : 0
+1 <-> 2  path : 1->2  w : 1
+
+Source : 2
+2 <-> 0  path : 2->0  w : 3
+2 <-> 1  path : 2->1  w : 2
+2 <-> 2  path : 2  w : 0
+

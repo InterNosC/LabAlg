@@ -1,6 +1,6 @@
 ﻿  Lab4.cpp
-C:\Users\38097\Desktop\labs\2-sem\2-sem\Lab4\Lab4\Lab4.cpp(46,17): warning C4018: '>=': signed/unsigned mismatch
-C:\Users\38097\Desktop\labs\2-sem\2-sem\Lab4\Lab4\Lab4.cpp(63,17): warning C4018: '<': signed/unsigned mismatch
-  book.cpp
-  Generating Code...
-  Lab4.vcxproj -> C:\Users\38097\Desktop\labs\2-sem\2-sem\Lab4\Debug\Lab4.exe
+C:\Users\38097\Desktop\labs\Lab4\Lab4\Lab4.cpp(42,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\38097\Desktop\labs\Lab4\Lab4\Lab4.cpp(45,39): warning C4018: '<': signed/unsigned mismatch
+C:\Users\38097\Desktop\labs\Lab4\Lab4\Lab4.cpp(80,17): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\38097\Desktop\labs\Lab4\Lab4\Lab4.cpp(97,17): warning C4018: '<': signed/unsigned mismatch
+  Lab4.vcxproj -> C:\Users\38097\Desktop\labs\Lab4\Debug\Lab4.exe

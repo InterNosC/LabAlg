@@ -21,27 +21,27 @@
     <ClCompile Include="book.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="graph.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Johnson%27s_algorithm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Roy_Floyd_algorithm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="my_graph_matrix.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="my_override_functions_and_operators.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="my_paths_between_vertices.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="johnsons_algorithm.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="fibonacci_heap.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="my_pair.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="book.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="graph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Johnson%27s_algorithm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Roy_Floyd_algorithm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

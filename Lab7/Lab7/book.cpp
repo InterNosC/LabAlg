@@ -4,16 +4,24 @@ namespace wm
 {
 	std::size_t countKey(const std::string& line)
 	{
-		std::size_t key = 0;
-		for (std::size_t i = 0; i < line.size(); i++)
+		try
 		{
-			int number = tolower(line[i]) - 'a';
-			key += number % 10;
-			if (i < 8) key *= 10;
+			std::size_t x = std::stoi(line);
+			return x;
 		}
-		key = key / 10;
-
-		return key;
+		catch (...)
+		{
+			std::size_t key = 0;
+			for (std::size_t i = 0; i < line.size(); i++)
+			{
+				int number = tolower(line[i]) - 'a';
+				key += number % 10;
+				if (i < 8) key *= 10;
+			}
+			key = key / 10;
+			return key;
+		}
+		
 	}
 	std::size_t Event::getKey()
 	{

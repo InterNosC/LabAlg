@@ -255,6 +255,7 @@ namespace ph
 		}
 		return map;
 	}
+
 	void findMenu(PHash& pHash)
 	{
 		while (true)
@@ -276,6 +277,7 @@ namespace ph
 			else std::cout << "Entered Event wasn't found!" << std::endl;
 		}
 	}
+
 	std::vector<std::string> split(std::string line, std::string delimiter)
 	{
 		std::vector<std::string> lines;
@@ -290,6 +292,7 @@ namespace ph
 		return lines;
 	}
 }
+
 using namespace ph;
 int main()
 {
